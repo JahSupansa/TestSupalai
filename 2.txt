@@ -1,0 +1,48 @@
+1. หาจำนวนพนักงานของแต่ละตำแหน่งงาน
+SELECT PositionName, COUNT(*) AS EmployeesCount
+FROM Employees
+JOIN Positions ON Employee.PositionID = Positions.PositionID
+GROUP BY PositionName;
+
+-------------------------------------------
+
+2. หาจำนวนพนักงานของแต่ละแผนก
+SELECT DepartmentName, COUNT(*) AS EmployeesCount
+FROM Employees
+JOIN Department ON Employees.DepartmentID = Department.DepartmentID
+GROUP BY DepartmentName;
+
+
+-------------------------------------------
+3. หาพนักงานที่มีเงินเดือนอยู่ในช่วง 20,000 ถึง 60,000 พร้อมแสดงข้อมูลพนักงาน แผนก และตำแหน่ง
+
+SELECT Employees.FirstName, Employees.LastName, Department.DepartmentName, Positions.PositionName, SalaryHistories.Salary
+FROM Employees
+JOIN Department ON Employees.DepartmentID = Department.DepartmentID
+JOIN Positions ON Employees.PositionID = Positions.PositionID
+JOIN SalaryHistories ON Employees.EmployeeID = SalaryHistories.EmployeeID
+WHERE SalaryHistories.Salary BETWEEN 20000 AND 60000;
+
+
+---------------------------------------------
+4. หาแผนกที่มีพนักงานตำแหน่ง Staff อย่างน้อย 2 คน พร้อมแสดงข้อมูลพนักงาน
+SELECT d.DepartmentName,
+       COUNT(e.EmployeeID) AS StaffCount
+FROM Department d
+JOIN Employees e ON d.DepartmentID = e.DepartmentID
+JOIN Positions p ON e.PositionID = p.PositionID
+WHERE p.PositionName = 'Staff'
+GROUP BY d.DepartmentName
+HAVING COUNT(e.EmployeeID) >= 2;
+
+
+
+
+------------------------------------------------
+5. หาค่าเฉลี่ยเงินเดือนของแต่ละตำแหน่งงาน โดยแบ่งเป็นแต่ละแผนก
+SELECT Department.DepartmentName, Positions.PositionName, AVG(SalaryHistories.Salary) AS AverageSalary
+FROM Employees
+JOIN Department ON Employees.DepartmentID = Department.DepartmentID
+JOIN Positions ON Employees.PositionID = Positions.PositionID
+JOIN SalaryHistories ON Employee.EmployeeID = SalaryHistories.EmployeeID
+GROUP BY Department.DepartmentName, Positions.PositionName;
