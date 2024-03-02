@@ -1,0 +1,19 @@
+
+1.Protocol: https:// (โปรโตคอลที่ใช้สื่อสารคือ HTTPS)
+
+2.Subdomain: www. (ซับโดเมนคือ "www")
+
+3.Domain: supalai.com (โดเมนคือ "supalai.com")
+
+4.Path: /project/condo/ศุภาลัย-เวอเรนด้ารามคำแหง (เส้นทางคือ "/project/condo/ศุภาลัย-เวอเรนด้ารามคำแหง")
+
+5.Query Parameters:
+
+utm_source=google
+utm_medium=search
+utm_campaign=verandaramkhamhaeng
+gad_source=1
+gclid=Cj0KCQiAoKeuBhCoARIsAB4Wxtcbl30lXqSOSv_LIL9UGQSZVHDgbPzQ-Q6vWdDJj6UofaVrMXuU_roaAoSwEALw_wcB (พารามิเตอร์ของคำสืบค้นและโฆษณา)
+ดังนั้นโครงสร้างของ URL คือ:
+
+Protocol://Subdomain.Domain/Path?QueryParameters
